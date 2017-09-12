@@ -44,3 +44,17 @@ dropInt' m (n:ns)
         | m <= 0     = (n:ns)
         | otherwise = dropInt' (m - 1) ns
 
+------------------------------------------------
+sumInt :: [Integer] -> Integer
+sumInt [] = 0
+sumInt (n:ns) = n + (sumInt ns)
+
+----------------------------------------------------
+-- scanSum :: [Integer] -> [Integer]
+-- scanSum (n:[]) = [n]
+-- scanSum (n:s:ns) = scanSum ((n + s) : ns)
+
+scanSum :: [Integer] -> [Integer]
+scanSum [] = []
+scanSum [n] = [n]
+scanSum (n:s:ns) = n: scanSum ((n + s) : ns)
