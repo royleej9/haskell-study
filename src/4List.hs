@@ -53,8 +53,14 @@ sumInt (n:ns) = n + (sumInt ns)
 -- scanSum :: [Integer] -> [Integer]
 -- scanSum (n:[]) = [n]
 -- scanSum (n:s:ns) = scanSum ((n + s) : ns)
-
 scanSum :: [Integer] -> [Integer]
 scanSum [] = []
 scanSum [n] = [n]
-scanSum (n:s:ns) = n: scanSum ((n + s) : ns)
+scanSum (n:s:ns) = n : scanSum ( n + s: ns)
+--------------------------------------------------
+diffs :: [Integer] -> [Integer]
+diffs [] = []
+diffs [n] = []
+diffs (x:y:ys) = (x-y): diffs(y:ys)
+
+--------------------------------
