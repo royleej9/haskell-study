@@ -1,3 +1,5 @@
+import Data.List
+
 doubleList :: [Integer] -> [Integer]
 doubleList [] = []
 doubleList (n:ns) = (2 * n) : doubleList ns
@@ -64,3 +66,18 @@ diffs [n] = []
 diffs (x:y:ys) = (x-y): diffs(y:ys)
 
 --------------------------------
+groupStr ::  [Char] -> [[Char]]
+groupStr str = group str
+
+countStr :: [Char] -> (Int, Char)
+countStr str = (length str , head str)
+
+
+cnt str = (length str , head str) 
+
+rleEncoder :: [Char] -> [(Int, Char)]
+-- rleEncoder :: String -> [(Int, Char)]
+-- rleEncoder str = map countStr (group str)
+rleEncoder str = map cnt (group str)
+        where
+                cnt s = (length s , head s) 
