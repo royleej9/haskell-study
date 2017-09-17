@@ -75,9 +75,18 @@ countStr str = (length str , head str)
 
 cnt str = (length str , head str) 
 
-rleEncoder :: [Char] -> [(Int, Char)]
--- rleEncoder :: String -> [(Int, Char)]
+-- rleEncoder :: [Char] -> [(Int, Char)]
+rleEncoder :: String -> [(Int, Char)]
 -- rleEncoder str = map countStr (group str)
 rleEncoder str = map cnt (group str)
         where
                 cnt s = (length s , head s) 
+
+expandRle :: (Int, Char) -> [Char]
+expandRle (x, y) = replicate x y
+
+rleDecoder :: [(Int, Char)] -> [Char]
+-- rleDecoder l = concat (map expandRle l)
+rleDecoder l = concat (map ex l)
+        where
+                ex (x, y) = replicate x y
