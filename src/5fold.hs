@@ -23,3 +23,31 @@ foldr' f acc (x:xs) = f x (foldr' f acc xs)
 foldl' :: (a -> b -> a) -> a -> [b] -> a
 foldl' f acc [] = acc
 foldl' f acc (x:xs) = foldl' f (f acc x) xs
+
+-- 입력 두 값의 타입이 서로 다르다
+-- 리스트의 원소와 결과 값이 다른 타입이 가능
+-- foldr  :: (a -> b -> b) -> b -> [a] -> b
+
+-- 입력 값이 결과 값과 같은 타입
+-- foldr1 :: (a -> a -> a) ->      [a] -> a
+
+foldr1' :: (a -> a ->a) -> [a] -> a
+foldr1' f [x] = x
+foldr1' f (x:xs) = f x (foldr1' f xs)
+foldr1' _ [] = error "Prelude.foldr1: empty list"
+
+foldl1' :: (a -> a -> a) -> [a] -> a
+foldl1' f (x:xs) = foldl f x xs
+foldl1' _ [] = error "Prelude.fildl1: empty list"
+
+
+and' :: [Bool] -> Bool
+-- and' [] = True
+-- and' (x:xs) = x && (and' xs)
+
+and' x = foldl (&&) True x
+
+or' :: [Bool] -> Bool
+-- or' [] = False
+-- or' (x:xs) = x || (or' xs)
+or' x = foldl (||) False x
