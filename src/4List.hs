@@ -90,3 +90,13 @@ rleDecoder :: [(Int, Char)] -> [Char]
 rleDecoder l = concat (map ex l)
         where
                 ex (x, y) = replicate x y
+
+
+getLastEl xs = drop (length xs -1) xs
+getLastEl2 xs = xs !! (length xs -1)
+getLastEl3 xs = tail xs
+getLastEl4 xs = head (reverse xs)
+
+removeLastEl xs = drop 1 (reverse xs)
+removeLastEl2 xs = take (length xs -1) xs
+removeLastEl3 xs = tail (reverse xs)
